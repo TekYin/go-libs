@@ -69,3 +69,13 @@ func Keys(ctx context.Context, dict string) ([]string, error) {
 func All(ctx context.Context, dict string) (map[string]string, error) {
 	return client.HGetAll(ctx, dict).Result()
 }
+
+func Exists(ctx context.Context, dict, key string) (bool, error) {
+	res, err := client.HExists(ctx, dict, key).Result()
+	return res, err
+}
+
+func ExistsDict(ctx context.Context, dict string) (bool, error) {
+	res, err := client.Exists(ctx, dict).Result()
+	return res == 1, err
+}
