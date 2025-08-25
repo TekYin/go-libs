@@ -3,19 +3,18 @@ module github.com/tekyin/go-libs
 go 1.24.4
 
 require (
+	github.com/ClickHouse/clickhouse-go/v2 v2.40.1
 	github.com/redis/go-redis/v9 v9.12.1
 	github.com/trinodb/trino-go-client v0.328.0
 )
 
 require (
 	github.com/ClickHouse/ch-go v0.67.0 // indirect
-	github.com/ClickHouse/clickhouse-go/v2 v2.40.1 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/go-faster/city v1.0.1 // indirect
 	github.com/go-faster/errors v0.7.1 // indirect
-	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/jcmturner/aescts/v2 v2.0.0 // indirect
