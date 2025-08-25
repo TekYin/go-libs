@@ -1,10 +1,11 @@
 package trino
 
 import (
-	"common-go-libs/errors"
+	"context"
 	"database/sql"
 	"fmt"
 
+	"github.com/tekyin/go-libs/errors"
 	_ "github.com/trinodb/trino-go-client/trino"
 )
 
@@ -20,13 +21,13 @@ func InitConnection(user string, host string, port int) error {
 	errors.CheckError(err)
 
 	Conn = &Connection{DB: db}
-	result := RunQuery("Select version() as version")
+	result := RunQuery(context.Background(), "Select version() as version")
 	fmt.Println("Connected to Trino at", host, "on port", port, " Trino version: ", result[0]["version"])
 	return nil
 }
 
-func RunQuery(query string) []map[string]interface{} {
-	rows, err := Conn.DB.Query(query)
+func RunQuery(ctx context.Context, query string, args ...any) []map[string]interface{} {
+	rows, err := Conn.DB.QueryContext(ctx, query, args...)
 	errors.CheckError(err)
 	defer func(rows *sql.Rows) {
 		err := rows.Close()
